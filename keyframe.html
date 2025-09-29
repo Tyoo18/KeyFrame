@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>keyframe</title>
+    <link rel="website icon" href="download 1.png">
+  </head>
+  <body>
+    <div class="vinyl">
+      <div class="vimg"></div>
+    </div>
+    <div class="btn">
+        <button class="plps" id="plps">play</button>
+    </div>
+  </body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      justify-items: center;
+    }
+    .vinyl {
+      width: 300px;
+      height: 300px;
+      border-radius: 100%;
+      border: solid rgb(58, 54, 54);
+      background: black;
+      position: relative; /* biar anaknya bisa absolute */
+
+      animation-duration: 1.5s;
+      animation-name: vinyl;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-play-state: running;
+      animation-play-state: paused;
+    }
+
+    .vimg {
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      border: solid silver;
+      background-image: url(download\ 1.png);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* geser ke tengah */
+    }
+    @keyframes vinyl {
+      0% {
+        rotate: 0;
+      }
+      100% {
+        rotate: 360deg;
+      }
+    }
+    .btn {
+      width: 300px;
+      height: 60px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
+      margin-top: 3em;
+    }
+    .plps {
+      width: 30%;
+      height: 100%;
+    }
+  </style>
+
+  <script>
+    const vinyl = document.getElementsByClassName("vinyl")[0];
+    const plps = document.getElementById("plps");
+
+    plps.addEventListener("click", () => {
+        if (plps.textContent === "play") {
+            plps.textContent = "pause";
+            vinyl.style.animationPlayState = "running"
+        } else {
+            plps.textContent = "play";
+            vinyl.style.animationPlayState = "paused";
+        }
+    });
+  </script>
+</html>
